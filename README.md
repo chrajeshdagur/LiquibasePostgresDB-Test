@@ -3,15 +3,17 @@ In this Demo we're executing single .sql file for the DB changes in all environm
 
 
 # List of liquibase commands
-root@1548e440e339:/home/liquibase# 
+Please remember the following text:
+
+```
 export LIQUIBASE_HOME=/home/liquibase
 export PATH=$LIQUIBASE_HOME:$PATH
-echo $PATH  
+echo $PATH
+```
 
+When running the script `apply-changes-prod.sh`, the following Liquibase commands will be executed:
 
-root@1548e440e339:/home/myproject1/db# sh scripts/apply-changes-prod.sh
-liquibase --defaultsFile=liquibase-dev.properties update-sql --sudo check before apply changes
-liquibase --defaultsFile=liquibase-dev.properties update    -- apply change in database
-liquibase --defaultsFile=liquibase-dev.properties changelogSync -- sync the changes between changelog and database
-liquibase --defaultsFile=liquibase-dev.properties status --check the deployment status of changeset files
-
+- `liquibase --defaultsFile=liquibase-dev.properties update-sql`: Check before applying changes to the database
+- `liquibase --defaultsFile=liquibase-dev.properties update`: Apply changes in the database
+- `liquibase --defaultsFile=liquibase-dev.properties changelogSync`: Synchronize the changes between the changelog and the database
+- `liquibase --defaultsFile=liquibase-dev.properties status`: Check the deployment status of changeset files
